@@ -18,21 +18,22 @@ const createSong = async (songData: ISongs, userId: number) => {
 };
 
 const getSongs = async (query: any) => {
-  let { title, first_name } = query;
+  let { name, title } = query;
 
+  name = name || '%';
   title = title || '%';
-  first_name = first_name || '%';
 
   const queryStr = `
-      SELECT songs.id, songs.title, songs.duration, albums.title AS album, artists.first_name AS artist
+      SELECT songs.id, songs.title, songs.duration, albums.title AS album, 
+      artists.first_name AS artist_first_name, artists.last_name AS artist_last_name
       FROM songs
       INNER JOIN albums ON songs.album_id = albums.id
       INNER JOIN artists ON songs.artist_id = artists.id
-      WHERE songs.title LIKE $1
-      AND artists.first_name LIKE $2;
+      WHERE (artists.first_name || ' ' || artists.last_name) ILIKE $1
+      AND songs.title ILIKE $2;
     `;
 
-  const values = [title, first_name];
+  const values = [`%${name}%`, `%${title}%`];
   const response = await DB.query(queryStr, values);
 
   return response.rows;

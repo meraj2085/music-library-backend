@@ -6,7 +6,8 @@ import { SongsService } from './songs.service';
 
 const createSong = catchAsync(async (req: Request, res: Response) => {
   const songData = req.body;
-  const result = await SongsService.createSong(songData);
+  const userId = req?.user?.userId;
+  const result = await SongsService.createSong(songData, userId);
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
@@ -15,6 +16,18 @@ const createSong = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+const getSongs = catchAsync(async (req: Request, res: Response) => {
+  const query = req.query;
+  const result = await SongsService.getSongs(query);
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Songs fetched successfully',
+    data: result,
+  });
+});
+
 export const SongsController = {
   createSong,
+  getSongs,
 };

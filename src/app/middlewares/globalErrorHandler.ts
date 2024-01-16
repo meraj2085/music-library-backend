@@ -4,8 +4,6 @@
 import { ErrorRequestHandler, NextFunction, Request, Response } from 'express';
 import config from '../../config';
 import ApiError from '../../errors/ApiError';
-import { ZodError } from 'zod';
-import handleZodError from '../../errors/handleZodError';
 import { IGenericErrorMessage } from '../../interfaces/error';
 
 const globalErrorHandler: ErrorRequestHandler = (
@@ -22,12 +20,7 @@ const globalErrorHandler: ErrorRequestHandler = (
   let message = 'Something went wrong !';
   let errorMessages: IGenericErrorMessage[] = [];
 
-  if (error instanceof ZodError) {
-    const simplifiedError = handleZodError(error);
-    statusCode = simplifiedError.statusCode;
-    message = simplifiedError.message;
-    errorMessages = simplifiedError.errorMessages;
-  } else if (error instanceof ApiError) {
+  if (error instanceof ApiError) {
     statusCode = error?.statusCode;
     message = error.message;
     errorMessages = error?.message

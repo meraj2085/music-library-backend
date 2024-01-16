@@ -4,6 +4,7 @@ const router = express.Router();
 import { ArtistsRoutes } from '../modules/artists/artists.routes';
 import { AuthRoutes } from '../modules/auth/auth.routes';
 import { AlbumsRoutes } from '../modules/albums/albums.routes';
+import { SongsRoutes } from '../modules/songs/songs.routes';
 
 const moduleRoutes = [
   {
@@ -17,6 +18,10 @@ const moduleRoutes = [
   {
     path: '/albums',
     route: AlbumsRoutes,
+  },
+  {
+    path: '/songs',
+    route: SongsRoutes,
   },
 ];
 

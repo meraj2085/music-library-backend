@@ -3,6 +3,7 @@ const router = express.Router();
 
 import { ArtistsRoutes } from '../modules/artists/artists.routes';
 import { AuthRoutes } from '../modules/auth/auth.routes';
+import { AlbumsRoutes } from '../modules/albums/albums.routes';
 
 const moduleRoutes = [
   {
@@ -12,6 +13,10 @@ const moduleRoutes = [
   {
     path: '/auth',
     route: AuthRoutes,
+  },
+  {
+    path: '/albums',
+    route: AlbumsRoutes,
   },
 ];
 

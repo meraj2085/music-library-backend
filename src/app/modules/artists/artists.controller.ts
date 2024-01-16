@@ -2,18 +2,18 @@ import { Request, Response } from 'express';
 import httpStatus from 'http-status';
 import catchAsync from '../../../shared/catchAsync';
 import sendResponse from '../../../shared/sendResponse';
-import { UsersService } from './users.service';
+import { ArtistsService } from './artists.service';
 
-const getAllUsers = catchAsync(async (req: Request, res: Response) => {
-  const result = await UsersService.getAllUsers();
+const getAllArtists = catchAsync(async (req: Request, res: Response) => {
+  const result = await ArtistsService.getAllArtists();
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Users fetched successfully!',
+    message: 'Artists fetched successfully!',
     data: result,
   });
 });
 
-export const UsersController = {
-  getAllUsers,
+export const ArtistsController = {
+  getAllArtists,
 };

@@ -79,7 +79,7 @@ const updateAlbum = async (id: string, dataToUpdate: Partial<IAlbums>) => {
   } RETURNING *`;
 
   const result = await DB.query(query, [...values, id]);
-  return result.rows;
+  return result.rows[0];
 };
 
 const deleteAlbum = async (id: string) => {

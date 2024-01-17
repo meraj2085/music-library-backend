@@ -164,8 +164,8 @@ JWT_REFRESH_EXPIRES_IN=365d
   ```bash
   Body:
       {
-          "first_name": "Meraj",
-          "last_name": "Hossain"
+          "first_name": "John",
+          "last_name": "Doe"
       }
 
   Response:
@@ -179,6 +179,127 @@ JWT_REFRESH_EXPIRES_IN=365d
                       "last_name": "Doe",
                       "email": "john@gmail.com"
                   }
+      }
+
+  Authorization: JWT Token Required
+  ```
+
+#### Albums
+
+- api/v1/albums/ (GET)
+  ```bash
+  Response:
+      {
+          "statusCode": 200,
+          "success": true,
+          "message": "Albums fetched successfully!",
+          "data": [
+                      {
+                          "id": 1,
+                          "title": "Album Title",
+                          "release_year": 2024,
+                          "genre": "Horror"
+                      },
+                      ...others
+                  ]
+      }
+
+  Authorization: JWT Token Required
+  ```
+- api/v1/albums/:id (GET)
+  ```bash
+  Response:
+      {
+          "statusCode": 200,
+          "success": true,
+          "message": "Album fetched successfully!",
+          "data": {
+                      "id": 1,
+                      "title": "Album Title",
+                      "release_year": 2024,
+                      "genre": "Horror"
+                  },
+      }
+
+  Authorization: JWT Token Required
+  ```
+- api/v1/albums/ (POST)
+
+  ```bash
+  Body:
+      {
+          "title": "Album Title",
+          "release_year": "2024",
+          "genre": "Horror"
+      }
+
+  Response:
+      {
+          "statusCode": 200,
+          "success": true,
+          "message": "Album created successfully",
+          "data": {
+              "album": {
+                  "id": 1,
+                  "title": "Album Title",
+                  "release_year": 2024,
+                  "genre": "Horror"
+              },
+              "albumArtists": {
+                  "artist_id": 1,
+                  "album_id": 1
+              }
+          }
+      }
+
+  Authorization: JWT Token Required
+  ```
+
+- api/v1/albums/:id (PATCH)
+
+  ```bash
+  Body:
+      {
+          "title": "Album Title",
+          "release_year": "2024",
+          "genre": "Horror"
+      }
+
+  Response:
+      {
+          "statusCode": 200,
+          "success": true,
+          "message": "Album updated successfully",
+          "data": {
+                      "id": 1,
+                      "title": "Album Title",
+                      "release_year": 2024,
+                      "genre": "Horror"
+                  }
+      }
+
+  Authorization: JWT Token Required
+  ```
+
+- api/v1/albums/:id (DELETE)
+  ```bash
+  Response:
+      {
+          "statusCode": 200,
+          "success": true,
+          "message": "Album deleted successfully",
+          "data": {
+              "album": {
+                  "id": 1,
+                  "title": "Album Title",
+                  "release_year": 2024,
+                  "genre": "Horror"
+              },
+              "albumArtists": {
+                  "artist_id": 1,
+                  "album_id": 1
+              }
+          }
       }
 
   Authorization: JWT Token Required

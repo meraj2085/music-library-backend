@@ -39,7 +39,46 @@ const getSongs = async (query: any) => {
   return response.rows;
 };
 
+const getSingleSong = async (id: string) => {
+  const query = `SELECT * FROM songs WHERE id = $1;`;
+  const values = [id];
+
+  const response = await DB.query(query, values);
+  const song = response.rows[0];
+
+  return song;
+};
+
+const deleteSong = async (id: string) => {
+  const query = `DELETE FROM songs WHERE id = $1 RETURNING *;`;
+  const values = [id];
+
+  const response = await DB.query(query, values);
+  const song = response.rows[0];
+
+  return song;
+};
+
+const updateSong = async (id: string, dataToUpdate: Partial<ISongs>) => {
+  const columns = Object.keys(dataToUpdate);
+  const values = Object.values(dataToUpdate);
+
+  const setClause = columns
+    .map((col, index) => `${col} = $${index + 1}`)
+    .join(', ');
+
+  const query = `UPDATE songs SET ${setClause} WHERE id = $${
+    columns.length + 1
+  } RETURNING *`;
+
+  const result = await DB.query(query, [...values, id]);
+  return result.rows;
+};
+
 export const SongsService = {
   createSong,
   getSongs,
+  getSingleSong,
+  updateSong,
+  deleteSong,
 };

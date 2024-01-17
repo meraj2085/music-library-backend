@@ -2,7 +2,7 @@ import DB from '../../../server';
 import { IArtists } from './artists.interface';
 
 const getAllArtists = async () => {
-  const query = `Select * from artists`;
+  const query = `SELECT id, first_name, last_name, email FROM artists`;
   const result = DB.query(query).then(res => {
     return res.rows;
   });
@@ -10,7 +10,7 @@ const getAllArtists = async () => {
 };
 
 const getSingleArtist = async (id: string) => {
-  const query = `Select * from artists where id = ${id}`;
+  const query = `SELECT id, first_name, last_name, email from artists where id = ${id}`;
   const result = DB.query(query).then(res => {
     return res.rows;
   });
@@ -28,7 +28,7 @@ const updateArtist = async (id: string, dataToUpdate: Partial<IArtists>) => {
 
   const query = `UPDATE artists SET ${setClause} WHERE id = $${
     columns.length + 1
-  } RETURNING *`;
+  } RETURNING id, first_name, last_name, email`;
 
   const result = await DB.query(query, [...values, id]);
   return result.rows;

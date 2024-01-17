@@ -421,6 +421,8 @@ JWT_REFRESH_EXPIRES_IN=365d
 
 <span style="margin: 10 0;">&nbsp;</span>
 
+<p align="center">ER Diagram</p>
+
 <p align="center">
-  <img src="https://res.cloudinary.com/dn163fium/image/upload/v1705394276/d9v6eifmj3xzryai3p1t.png" alt="ER Diagram" style="max-width: 300px;">
+  <img src="https://res.cloudinary.com/dn163fium/image/upload/v1705471608/cxio5pgkh3adypotol87.jpg" alt="ER Diagram" style="max-width: 300px;">
 </p>

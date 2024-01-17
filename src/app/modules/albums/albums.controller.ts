@@ -16,6 +16,17 @@ const createAlbum = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+const addArtistToAlbum = catchAsync(async (req: Request, res: Response) => {
+  const dataToSend = req.body;
+  const result = await AlbumService.addArtistToAlbum(dataToSend);
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Artist added to album successfully',
+    data: result,
+  });
+});
+
 const getAllAlbum = catchAsync(async (req: Request, res: Response) => {
   const result = await AlbumService.getAllAlbum();
   sendResponse(res, {
@@ -63,6 +74,7 @@ const deleteAlbum = catchAsync(async (req: Request, res: Response) => {
 
 export const AlbumsController = {
   createAlbum,
+  addArtistToAlbum,
   getAllAlbum,
   getSingleAlbum,
   updateAlbum,

@@ -12,7 +12,13 @@ const updateAlbumJoiSchema = Joi.object({
   genre: Joi.string(),
 });
 
+const addArtistToAlbum = Joi.object({
+  artistId: Joi.number().required(),
+  albumId: Joi.number().required(),
+});
+
 export const AlbumValidation = {
   updateAlbumJoiSchema,
   addAlbumJoiSchema,
+  addArtistToAlbum,
 };

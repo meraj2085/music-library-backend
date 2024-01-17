@@ -65,6 +65,7 @@ JWT_REFRESH_EXPIRES_IN=365d
 #### Auth
 
 - api/v1/auth/signup (POST)
+
   ```bash
   Body:
       {
@@ -87,7 +88,9 @@ JWT_REFRESH_EXPIRES_IN=365d
                   }
       }
   ```
+
 - api/v1/auth/login (POST)
+
   ```bash
   Body:
       {
@@ -105,7 +108,9 @@ JWT_REFRESH_EXPIRES_IN=365d
           }
       }
   ```
+
 - api/v1/auth/refresh-token (POST)
+
   ```bash
   Response:
       {
@@ -123,6 +128,7 @@ JWT_REFRESH_EXPIRES_IN=365d
 #### Artist
 
 - api/v1/artists/ (GET)
+
   ```bash
   Response:
       {
@@ -142,7 +148,9 @@ JWT_REFRESH_EXPIRES_IN=365d
 
   Authorization: JWT Token Required
   ```
+
 - api/v1/artists/:id (GET)
+
   ```bash
   Response:
       {
@@ -159,6 +167,7 @@ JWT_REFRESH_EXPIRES_IN=365d
 
   Authorization: JWT Token Required
   ```
+
 - api/v1/artists/ (PATCH)
 
   ```bash
@@ -187,6 +196,7 @@ JWT_REFRESH_EXPIRES_IN=365d
 #### Albums
 
 - api/v1/albums/ (GET)
+
   ```bash
   Response:
       {
@@ -206,7 +216,9 @@ JWT_REFRESH_EXPIRES_IN=365d
 
   Authorization: JWT Token Required
   ```
+
 - api/v1/albums/:id (GET)
+
   ```bash
   Response:
       {
@@ -223,6 +235,7 @@ JWT_REFRESH_EXPIRES_IN=365d
 
   Authorization: JWT Token Required
   ```
+
 - api/v1/albums/ (POST)
 
   ```bash
@@ -249,6 +262,29 @@ JWT_REFRESH_EXPIRES_IN=365d
                   "artist_id": 1,
                   "album_id": 1
               }
+          }
+      }
+
+  Authorization: JWT Token Required
+  ```
+
+- api/v1/albums/addArtistToAlbum (POST)
+
+  ```bash
+  Body:
+      {
+          "artistId": 6,
+          "albumId": 6
+      }
+
+  Response:
+      {
+          "statusCode": 200,
+          "success": true,
+          "message": "Artist added to album successfully",
+          "data": {
+              "artist_id": 6,
+              "album_id": 6
           }
       }
 
@@ -282,6 +318,7 @@ JWT_REFRESH_EXPIRES_IN=365d
   ```
 
 - api/v1/albums/:id (DELETE)
+
   ```bash
   Response:
       {
@@ -308,6 +345,7 @@ JWT_REFRESH_EXPIRES_IN=365d
 #### Songs
 
 - api/v1/songs/ (GET)
+
   ```bash
   Response:
       {
@@ -331,7 +369,9 @@ JWT_REFRESH_EXPIRES_IN=365d
   Query: api/v1/songs?name=John&title=Song Title
   Note: Here Name is artist name and title is song title. You can filter by both of them
   ```
+
 - api/v1/songs/:id (GET)
+
   ```bash
   Response:
       {
@@ -349,7 +389,9 @@ JWT_REFRESH_EXPIRES_IN=365d
 
   Authorization: JWT Token Required
   ```
+
 - api/v1/songs/ (POST)
+
   ```bash
   Body:
       {
@@ -374,6 +416,7 @@ JWT_REFRESH_EXPIRES_IN=365d
 
   Authorization: JWT Token Required
   ```
+
 - api/v1/songs/:id (PATCH)
 
   ```bash
@@ -401,6 +444,7 @@ JWT_REFRESH_EXPIRES_IN=365d
   ```
 
 - api/v1/songs/:id (DELETE)
+
   ```bash
   Response:
       {

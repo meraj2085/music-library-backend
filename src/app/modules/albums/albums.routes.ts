@@ -26,4 +26,11 @@ router.post(
   AlbumsController.createAlbum
 );
 
+router.post(
+  '/addArtistToAlbum',
+  auth(),
+  validateRequest(AlbumValidation.addArtistToAlbum),
+  AlbumsController.addArtistToAlbum
+);
+
 export const AlbumsRoutes = router;

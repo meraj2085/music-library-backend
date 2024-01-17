@@ -49,6 +49,18 @@ const createAlbum = async (albumData: IAlbums, artistId: number) => {
   }
 };
 
+const addArtistToAlbum = async (dataToSend: any) => {
+  const { artistId, albumId } = dataToSend;
+  const query = `
+    INSERT INTO album_artists (artist_id, album_id)
+    VALUES ($1, $2)
+    RETURNING *;
+  `;
+  const values = [artistId, albumId];
+  const result = await DB.query(query, values);
+  return result.rows[0];
+};
+
 const getAllAlbum = async () => {
   const query = `Select * from albums`;
   const result = DB.query(query).then(res => {
@@ -134,6 +146,7 @@ const deleteAlbum = async (id: string) => {
 
 export const AlbumService = {
   createAlbum,
+  addArtistToAlbum,
   getAllAlbum,
   getSingleAlbum,
   updateAlbum,

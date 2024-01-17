@@ -1,5 +1,5 @@
-<p align="center" style="font-size: 20px; font-weight: bold;">Music Library</p>
-<p align="center" style="font-size: 15px;">a place to showcase your talest</p>
+<p align="center" style="font-size: 20px;">Music Library
+<br/> a place to showcase your talest</p>
 
 ## Project Setup
 

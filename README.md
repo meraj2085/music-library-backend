@@ -305,6 +305,120 @@ JWT_REFRESH_EXPIRES_IN=365d
   Authorization: JWT Token Required
   ```
 
+#### Songs
+
+- api/v1/songs/ (GET)
+  ```bash
+  Response:
+      {
+          "statusCode": 200,
+          "success": true,
+          "message": "Songs fetched successfully!",
+          "data": [
+                      {
+                          "id": 1,
+                          "title": "Song Title",
+                          "duration": "10m",
+                          "album": "Album Name",
+                          "artist_first_name": "John",
+                          "artist_last_name": "Doe"
+                      },
+                      ...others
+                  ]
+      }
+
+  Authorization: JWT Token Required
+  Query: api/v1/songs?name=John&title=Song Title
+  Note: Here Name is artist name and title is song title. You can filter by both of them
+  ```
+- api/v1/songs/:id (GET)
+  ```bash
+  Response:
+      {
+          "statusCode": 200,
+          "success": true,
+          "message": "Song fetched successfully!",
+          "data": {
+                      "id": 1,
+                      "title": "Song Title",
+                      "duration": "100m",
+                      "album_id": 1,
+                      "artist_id": 1
+                  }
+      }
+
+  Authorization: JWT Token Required
+  ```
+- api/v1/songs/ (POST)
+  ```bash
+  Body:
+      {
+          "title": "Song Title",
+          "duration": "100m",
+          "album_id": 1
+      }
+
+  Response:
+      {
+          "statusCode": 200,
+          "success": true,
+          "message": "Song added successfully!",
+          "data": {
+                      "id": 1,
+                      "title": "Song Title",
+                      "duration": "10m",
+                      "album_id": 1,
+                      "artist_id": 1
+                  }
+      }
+
+  Authorization: JWT Token Required
+  ```
+- api/v1/songs/:id (PATCH)
+
+  ```bash
+  Body:
+      {
+          "title": "Song Title",
+          "duration": "100m"
+      }
+
+  Response:
+      {
+          "statusCode": 200,
+          "success": true,
+          "message": "Song updated successfully!",
+          "data": {
+                      "id": 1,
+                      "title": "Song Title",
+                      "duration": "100m",
+                      "album_id": 1,
+                      "artist_id": 1
+                  }
+      }
+
+  Authorization: JWT Token Required
+  ```
+
+- api/v1/songs/:id (DELETE)
+  ```bash
+  Response:
+      {
+          "statusCode": 200,
+          "success": true,
+          "message": "Song deleted successfully!",
+          "data": {
+                      "id": 1,
+                      "title": "Song Title",
+                      "duration": "100m",
+                      "album_id": 1,
+                      "artist_id": 1
+                  }
+      }
+
+  Authorization: JWT Token Required
+  ```
+
 <span style="margin: 10 0;">&nbsp;</span>
 
 <p align="center">

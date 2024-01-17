@@ -22,8 +22,9 @@ const signUp = async (userData: IArtists) => {
     ...userData,
     password,
   };
-  const query = `INSERT INTO artists (first_name, last_name, email, password) VALUES ('${dataToSave.first_name}', '${dataToSave.last_name}', '${dataToSave.email}', '${dataToSave.password}')`;
-  const result = DB.query(query);
+  const query = `INSERT INTO artists (first_name, last_name, email, password) VALUES ('${dataToSave.first_name}', '${dataToSave.last_name}', '${dataToSave.email}', '${dataToSave.password}') RETURNING first_name, last_name, email, id`;
+  const result = DB.query(query).then(res => res.rows[0]);
+
   return result;
 };
 

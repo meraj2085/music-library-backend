@@ -53,7 +53,7 @@ JWT_REFRESH_EXPIRES_IN=365d
 <div align="left">  
 <a href="https://www.typescriptlang.org/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/typescript-original.svg" alt="TypeScript" height="40" /></a>  
 <span style="margin: 0 10px;">&nbsp;</span>
-<a href="https://www.postgresql.org/" target="_blank"><img src="https://profilinator.rishav.dev/skills-assets/postgresql-original-wordmark.svg" alt="PostgreSQL" height="40" /></a> 
+<a href="https://www.postgresql.org/" target="_blank"><img src="https://profilinator.rishav.dev/skills-assets/postgresql-original-wordmark.svg" alt="PostgreSQL" height="50" /></a> 
 <span style="margin: 0 10px;">&nbsp;</span>
 <a href="https://nodejs.org/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/nodejs-original-wordmark.svg" alt="Node.js" height="65" /></a>  
 <span style="margin: 0 10px;">&nbsp;</span>
@@ -66,6 +66,28 @@ JWT_REFRESH_EXPIRES_IN=365d
 #### Auth
 
 - api/v1/auth/signup (POST)
+    ```bash
+    Body: 
+        {
+            "first_name": "John",
+            "last_name": "Dow",
+            "email": "john@gmail.com",
+            "password": "123456"
+        }
+    
+    Response:
+        {
+            "statusCode": 200,
+            "success": true,
+            "message": "User created successfully",
+            "data": {
+                        "first_name": "John",
+                        "last_name": "Doe",
+                        "email": "john@gmail.com",
+                        "id": 1
+                    }
+        }
+    ```
 - api/v1/auth/login (POST)
 - api/v1/auth/refresh-token (POST)
 

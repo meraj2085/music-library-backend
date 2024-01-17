@@ -17,11 +17,4 @@ router.patch(
   ArtistsController.updateArtist
 );
 
-router.patch(
-  '/',
-  auth(),
-  validateRequest(ArtistsValidation.updateArtistsJoiSchema),
-  ArtistsController.updateArtist
-);
-
 export const ArtistsRoutes = router;
